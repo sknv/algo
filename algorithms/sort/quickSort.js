@@ -8,7 +8,7 @@ const swap = (arr, i, j) => {
  * @param {number[]} arr
  * @param {number} left
  * @param {number} right
- * @return {number} Partitioning index
+ * @returns {number} Partitioning index
  */
 const partition = (arr, left, right) => {
     const pivot = arr[right] // take the right element as the pivot one
@@ -38,10 +38,10 @@ const quickSort = (arr, left, right) => {
 }
 
 /**
- * @param {number[]} nums
+ * @param {number[]} arr
  */
-const sortArray = nums => {
-    quickSort(nums, 0, nums.length - 1)
+const sortArray = arr => {
+    quickSort(arr, 0, arr.length - 1)
 }
 
 module.exports = sortArray

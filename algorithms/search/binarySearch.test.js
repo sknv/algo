@@ -1,4 +1,4 @@
-const binarySearch = require('./binary_search.js')
+const binarySearch = require('./binarySearch.js')
 
 const testBinarySearch = () => {
     const nums = [5, -2, 12, 0, 9]

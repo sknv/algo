@@ -1,4 +1,4 @@
-const selectionSort = require('./selection_sort.js')
+const selectionSort = require('./selectionSort.js')
 
 const testSelectionSort = () => {
     let nums = [5, -2, 12, 0, 9], expected = [-2, 0, 5, 9, 12]

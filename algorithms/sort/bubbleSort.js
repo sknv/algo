@@ -5,14 +5,14 @@ const swap = (arr, i, j) => {
 }
 
 /**
- * @param {number[]} nums
+ * @param {number[]} arr
  */
-const bubbleSort = nums => {
-    for (let i = 0; i < nums.length; i++) {
+const bubbleSort = arr => {
+    for (let i = 0; i < arr.length; i++) {
         let swapped = false
-        for (let j = 0; j < nums.length - i - 1; j++) {
-            if (nums[j] > nums[j + 1]) {
-                swap(nums, j, j + 1)
+        for (let j = 0; j < arr.length - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                swap(arr, j, j + 1)
                 swapped = true
             }
         }
