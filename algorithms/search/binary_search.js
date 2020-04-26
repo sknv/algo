@@ -7,12 +7,11 @@ const binarySearch = (nums, target) => {
     let left = 0, right = nums.length - 1
     while (left <= right) {
         const mid = left + Math.trunc((right - left) / 2)
-        const check = nums[mid]
 
-        if (check === target) {
+        if (nums[mid] === target) {
             return mid
         }
-        if (target < check) {
+        if (target < nums[mid]) {
             right = mid - 1
             continue
         }
