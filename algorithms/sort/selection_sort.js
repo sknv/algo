@@ -6,7 +6,6 @@ const swap = (arr, i, j) => {
 
 /**
  * @param {number[]} nums
- * @return {number[]}
  */
 const selectionSort = nums => {
     for (let i = 0; i < nums.length - 1; i++) {
@@ -18,5 +17,6 @@ const selectionSort = nums => {
         }
         swap(nums, i, minIndex)
     }
-    return nums
 }
+
+module.exports = selectionSort

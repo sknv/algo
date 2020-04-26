@@ -1,9 +1,3 @@
-const swap = (arr, i, j) => {
-    const tmp = arr[i]
-    arr[i] = arr[j]
-    arr[j] = tmp
-}
-
 /**
  * @param {number[]} arr
  * @param {number} left
@@ -58,9 +52,9 @@ const mergeSort = (arr, left, right) => {
 
 /**
  * @param {number[]} nums
- * @return {number[]}
  */
 const sortArray = nums => {
     mergeSort(nums, 0, nums.length - 1)
-    return nums
 }
+
+module.exports = sortArray

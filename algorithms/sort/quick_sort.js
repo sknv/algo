@@ -39,9 +39,9 @@ const quickSort = (arr, left, right) => {
 
 /**
  * @param {number[]} nums
- * @return {number[]}
  */
 const sortArray = nums => {
     quickSort(nums, 0, nums.length - 1)
-    return nums
 }
+
+module.exports = sortArray

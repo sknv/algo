@@ -19,3 +19,5 @@ const binarySearch = (nums, target) => {
     }
     return -1
 }
+
+module.exports = binarySearch

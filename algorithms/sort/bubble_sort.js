@@ -6,7 +6,6 @@ const swap = (arr, i, j) => {
 
 /**
  * @param {number[]} nums
- * @return {number[]}
  */
 const bubbleSort = nums => {
     for (let i = 0; i < nums.length; i++) {
@@ -21,5 +20,6 @@ const bubbleSort = nums => {
             break
         }
     }
-    return nums
 }
+
+module.exports = bubbleSort
