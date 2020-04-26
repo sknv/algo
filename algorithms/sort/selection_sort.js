@@ -8,7 +8,7 @@ const swap = (arr, i, j) => {
  * @param {number[]} nums
  * @return {number[]}
  */
-const selectionSort = (nums) => {
+const selectionSort = nums => {
     for (let i = 0; i < nums.length - 1; i++) {
         let minIndex = i
         for (let j = i + 1; j < nums.length; j++) {

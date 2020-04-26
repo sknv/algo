@@ -8,16 +8,13 @@ const swap = (arr, i, j) => {
  * @param {number[]} nums
  * @return {number[]}
  */
-const bubbleSort = nums => {
+const insertionSort = nums => {
     for (let i = 0; i < nums.length; i++) {
-        let swapped = false
-        for (let j = 0; j < nums.length - i - 1; j++) {
-            if (nums[j] > nums[j + 1]) {
-                swap(nums, j, j + 1)
-                swapped = true
+        for (let j = i; j > 0; j--) {
+            if (nums[j] < nums[j - 1]) {
+                swap(nums, j, j - 1)
+                continue
             }
-        }
-        if (!swapped) {
             break
         }
     }
