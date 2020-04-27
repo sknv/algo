@@ -10,6 +10,7 @@ class LinkedList {
     }
 
     /**
+     * Append a new element to the tail.
      * @param {*} value
      * @returns {LinkedList}
      */
@@ -30,6 +31,7 @@ class LinkedList {
     }
 
     /**
+     * Remove and return the head.
      * @returns {LinkedListNode}
      */
     deleteHead() {
@@ -47,7 +49,6 @@ class LinkedList {
         }
         return deletedHead
     }
-
 }
 
 module.exports = LinkedList
