@@ -18,11 +18,7 @@ class Queue {
      * @returns {*}
      */
     peek() {
-        if (!this.linkedList.head) {
-            return null
-        }
-
-        return this.linkedList.head.value
+        return this.linkedList.head?.value
     }
 
     /**
@@ -36,12 +32,11 @@ class Queue {
 
     /**
      * Remove the element at the front of the queue (the head of the linked list).
-     * If the queue is empty, return null.
      * @returns {*}
      */
     dequeue() {
-        const removedHead = this.linkedList.deleteHead()
-        return removedHead ? removedHead.value : null
+        const deletedHead = this.linkedList.deleteHead()
+        return deletedHead?.value
     }
 }
 
