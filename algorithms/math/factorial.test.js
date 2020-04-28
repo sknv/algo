@@ -1,4 +1,4 @@
-const factorial = require('./factorial.js')
+import factorial from './factorial.js'
 
 const testFactorial = () => {
     let num = factorial(0), expected = 1

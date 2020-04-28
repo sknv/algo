@@ -50,4 +50,4 @@ const mergeSort = arr => {
     merge(arr, leftSlice, rightSlice)
 }
 
-module.exports = mergeSort
+export default mergeSort

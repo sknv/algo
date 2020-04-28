@@ -44,4 +44,4 @@ const sortArray = arr => {
     quickSort(arr, 0, arr.length - 1)
 }
 
-module.exports = sortArray
+export default sortArray

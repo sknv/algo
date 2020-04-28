@@ -1,4 +1,4 @@
-const isPrime = require('./isPrime.js')
+import isPrime from './isPrime.js'
 
 const testIsPrime = () => {
     let prime = isPrime(1), expected = false

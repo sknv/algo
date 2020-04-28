@@ -1,4 +1,4 @@
-const insertionSort = require('./insertionSort.js')
+import insertionSort from './insertionSort.js'
 
 const testInsertionSort = () => {
     let nums = [5, -2, 12, 0, 9], expected = [-2, 0, 5, 9, 12]

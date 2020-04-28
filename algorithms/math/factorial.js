@@ -10,4 +10,4 @@ const factorial = n => {
     return result
 }
 
-module.exports = factorial
+export default factorial

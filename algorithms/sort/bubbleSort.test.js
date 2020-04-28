@@ -1,4 +1,4 @@
-const bubbleSort = require('./bubbleSort.js')
+import bubbleSort from './bubbleSort.js'
 
 const testBubbleSort = () => {
     let nums = [5, -2, 12, 0, 9], expected = [-2, 0, 5, 9, 12]

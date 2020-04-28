@@ -1,4 +1,4 @@
-const Queue = require('./Queue.js')
+import Queue from './Queue.js'
 
 const testNewQueue = () => {
     const queue = new Queue()

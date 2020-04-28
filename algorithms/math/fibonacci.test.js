@@ -1,4 +1,4 @@
-const fibonacci = require('./fibonacci.js')
+import fibonacci from './fibonacci.js'
 
 const testFibonacci = () => {
     let num = fibonacci(1), expected = 1

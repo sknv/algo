@@ -1,4 +1,4 @@
-const LinkedList = require('../linked-list/LinkedList.js')
+import LinkedList from '../linked-list/LinkedList.js'
 
 class Queue {
     /** @type {LinkedList} */
@@ -38,4 +38,4 @@ class Queue {
     }
 }
 
-module.exports = Queue
+export default Queue
