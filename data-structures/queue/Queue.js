@@ -1,10 +1,8 @@
 const LinkedList = require('../linked-list/LinkedList.js')
 
 class Queue {
-    constructor() {
-        /** @var LinkedList */
-        this.linkedList = new LinkedList()
-    }
+    /** @type {LinkedList} */
+    linkedList = new LinkedList()
 
     /**
      * @returns {boolean}

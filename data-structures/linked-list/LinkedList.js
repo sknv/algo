@@ -1,13 +1,9 @@
-const LinkedListNode = require('./LinkedListNode.js')
-
 class LinkedList {
-    constructor() {
-        /** @var LinkedListNode */
-        this.head = null
+    /** @type {LinkedListNode} */
+    head
 
-        /** @var LinkedListNode */
-        this.tail = null
-    }
+    /** @type {LinkedListNode} */
+    tail
 
     /**
      * Append a new element to the tail.
@@ -15,7 +11,8 @@ class LinkedList {
      * @returns {LinkedList}
      */
     append(value) {
-        const newNode = new LinkedListNode(value)
+        /** @type {LinkedListNode} */
+        const newNode = { value }
 
         // If there is no head yet let's make new node a head
         if (!this.head) {
