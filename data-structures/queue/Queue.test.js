@@ -25,10 +25,13 @@ const testQueuePeek = () => {
 const testQueueDequeue = () => {
     const queue = new Queue(), expected = 1
     queue.enqueue(expected)
-    const value = queue.dequeue()
+    queue.enqueue(2)
 
-    console.assert(queue.isEmpty(), 'expect queue to be empty')
+    const value = queue.dequeue()
     console.assert(value === expected, `expect to be: ${expected}, got instead: ${value}`)
+
+    queue.dequeue()
+    console.assert(queue.isEmpty(), 'expect queue to be empty')
 }
 
 testNewQueue()

@@ -1,6 +1,6 @@
 import LinkedList from '../linked-list/LinkedList.js'
 
-class Queue {
+class Stack {
     /** @type {LinkedList} */
     linkedList = new LinkedList()
 
@@ -12,7 +12,7 @@ class Queue {
     }
 
     /**
-     * Read the element at the front of the queue without removing it.
+     * Read the element at the front of the stack without removing it.
      * @returns {*}
      */
     peek() {
@@ -20,22 +20,22 @@ class Queue {
     }
 
     /**
-     * Add a new element to the end of the queue (the tail of the linked list).
-     * This element will be processed after all elements ahead of it.
+     * Add a new element to the front of the stack (the head of the linked list).
+     * This element will be processed first.
      * @param {*} value
      */
-    enqueue(value) {
-        this.linkedList.append(value)
+    push(value) {
+        this.linkedList.prepend(value)
     }
 
     /**
      * Remove and return the element at the front of the queue (the head of the linked list).
      * @returns {*}
      */
-    dequeue() {
+    pop() {
         const deletedHead = this.linkedList.deleteHead()
         return deletedHead?.value
     }
 }
 
-export default Queue
+export default Stack

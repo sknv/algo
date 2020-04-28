@@ -6,6 +6,23 @@ class LinkedList {
     tail
 
     /**
+     * @param {*} value
+     * @returns {LinkedList}
+     */
+    prepend(value) {
+        // Make new node to be the head
+        /** @type {LinkedListNode} */
+        const newNode = { value, next: this.head }
+        this.head = newNode
+
+        // If there is no tail yet let's make new node a tail
+        if (!this.tail) {
+            this.tail = newNode
+        }
+        return this
+    }
+
+    /**
      * Append a new element to the tail.
      * @param {*} value
      * @returns {LinkedList}
