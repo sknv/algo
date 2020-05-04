@@ -7,7 +7,7 @@ class LinkedList {
 
     /**
      * @param {*} value
-     * @returns {LinkedList}
+     * @returns {LinkedListNode}
      */
     prepend(value) {
         // Make new node to be the head
@@ -19,13 +19,13 @@ class LinkedList {
         if (!this.tail) {
             this.tail = newNode
         }
-        return this
+        return newNode
     }
 
     /**
      * Append a new element to the tail.
      * @param {*} value
-     * @returns {LinkedList}
+     * @returns {LinkedListNode}
      */
     append(value) {
         /** @type {LinkedListNode} */
@@ -35,13 +35,13 @@ class LinkedList {
         if (!this.head) {
             this.head = newNode
             this.tail = newNode
-            return this
+            return newNode
         }
 
         // Attach new node to the end of linked list
         this.tail.next = newNode
         this.tail = newNode
-        return this
+        return newNode
     }
 
     /**
@@ -62,6 +62,31 @@ class LinkedList {
             this.tail = null
         }
         return deletedHead
+    }
+
+    /**
+     * @returns {LinkedListNode}
+     */
+    deleteTail() {
+        const deletedTail = this.tail
+
+        if (this.head === this.tail) { // there is only one node in linked list
+            this.head = null
+            this.tail = null
+            return deletedTail
+        }
+
+        // Rewind to the last node and delete "next" link for the node before the last one
+        let currentNode = this.head
+        while (currentNode.next) {
+            if (!currentNode.next.next) {
+                currentNode.next = null
+            } else {
+                currentNode = currentNode.next
+            }
+        }
+        this.tail = currentNode
+        return deletedTail
     }
 }
 
