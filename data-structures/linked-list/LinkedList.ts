@@ -4,6 +4,10 @@ class LinkedList<T> {
     head?: LinkedListNode<T>
     tail?: LinkedListNode<T>
 
+    get isEmpty(): boolean {
+        return (!this.head || !this.tail)
+    }
+
     /**
      * Returns the prepended node.
      */
@@ -29,14 +33,14 @@ class LinkedList<T> {
         const newNode = { value }
 
         // If there is no elements yet let's make new node a head
-        if (!this.head || !this.tail) {
+        if (this.isEmpty) {
             this.head = newNode
             this.tail = newNode
             return newNode
         }
 
         // Attach new node to the end of linked list
-        this.tail.next = newNode
+        this.tail!.next = newNode
         this.tail = newNode
         return newNode
     }

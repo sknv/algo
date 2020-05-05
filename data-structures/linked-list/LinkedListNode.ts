@@ -1,5 +1,5 @@
 type LinkedListNode<T> = {
-    value: T;
+    readonly value: T;
     next?: LinkedListNode<T>
 }
 
