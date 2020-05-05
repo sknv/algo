@@ -1,5 +1,5 @@
 # algo
-Collection of algorithms and data structures implemented on JS
+Collection of algorithms and data structures implemented on TS
 
 ## Requirements
-* [NodeJS v14+](https://nodejs.org/)
+* [Deno v1+](https://github.com/denoland/deno/)
