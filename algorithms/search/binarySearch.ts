@@ -1,9 +1,7 @@
 /**
- * @param {number[]} arr
- * @param {number} target
- * @returns {number} Index of element if exists, -1 otherwise
+ * Returns the index of an element if exists, -1 otherwise
  */
-const binarySearch = (arr, target) => {
+function binarySearch(arr: number[], target: number): number {
     let left = 0, right = arr.length - 1
     while (left <= right) {
         const mid = left + Math.trunc((right - left) / 2)
