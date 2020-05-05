@@ -1,16 +1,11 @@
-const swap = (arr, i, j) => {
-    const tmp = arr[i]
-    arr[i] = arr[j]
-    arr[j] = tmp
+function swap(arr: number[], i: number, j: number) {
+    [arr[i], arr[j]] = [arr[j], arr[i]]
 }
 
 /**
- * @param {number[]} arr
- * @param {number} left
- * @param {number} right
- * @returns {number} Partitioning index
+ * Returns partitioning index.
  */
-const partition = (arr, left, right) => {
+function partition(arr: number[], left: number, right: number): number {
     const pivot = arr[right] // take the right element as the pivot one
     let partIndex = left
     for (let i = left; i < right; i++) { // place all the elements smaller than pivot to the left
@@ -23,12 +18,7 @@ const partition = (arr, left, right) => {
     return partIndex
 }
 
-/**
- * @param {number[]} arr
- * @param {number} left
- * @param {number} right
- */
-const quickSort = (arr, left, right) => {
+function quickSort(arr: number[], left: number, right: number) {
     if (left < right) {
         let pi = partition(arr, left, right) // partitioning index
 
@@ -37,10 +27,7 @@ const quickSort = (arr, left, right) => {
     }
 }
 
-/**
- * @param {number[]} arr
- */
-const sortArray = arr => {
+function sortArray(arr: number[]) {
     quickSort(arr, 0, arr.length - 1)
 }
 
