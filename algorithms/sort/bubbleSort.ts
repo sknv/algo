@@ -1,13 +1,8 @@
-const swap = (arr, i, j) => {
-    const tmp = arr[i]
-    arr[i] = arr[j]
-    arr[j] = tmp
+function swap(arr: number[], i: number, j: number) {
+    [arr[i], arr[j]] = [arr[j], arr[i]]
 }
 
-/**
- * @param {number[]} arr
- */
-const bubbleSort = arr => {
+function bubbleSort(arr: number[]) {
     for (let i = 0; i < arr.length; i++) {
         let swapped = false
         for (let j = 0; j < arr.length - i - 1; j++) {

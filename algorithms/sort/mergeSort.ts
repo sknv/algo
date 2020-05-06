@@ -1,9 +1,4 @@
-/**
- * @param {number[]} arr
- * @param {number[]} leftSlice
- * @param {number[]} rightSLice
- */
-const merge = (arr, leftSlice, rightSlice) => {
+function merge(arr: number[], leftSlice: number[], rightSlice: number[]) {
     // Merge the slices
     let i = 0, j = 0, mergeIndex = 0
     while (i < leftSlice.length && j < rightSlice.length) {
@@ -30,10 +25,7 @@ const merge = (arr, leftSlice, rightSlice) => {
     }
 }
 
-/**
- * @param {number[]} arr
- */
-const mergeSort = arr => {
+function mergeSort(arr: number[]) {
     if (arr.length <= 1) {
         return
     }

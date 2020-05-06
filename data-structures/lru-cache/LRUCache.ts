@@ -1,22 +1,18 @@
-class LRUCache {
-    /** @type {Map<number,number>} */
-    cache = new Map()
+class LRUCache<K, V> {
+    cache = new Map<K, V>()
+    capacity: number
 
-    /**
-     * @param {number} capacity
-     */
-    constructor(capacity) {
+    constructor(capacity: number) {
         this.capacity = capacity
     }
 
     /**
-     * @param {number} key
-     * @returns {number}
+     * Return the value in cache by key, or undefined if one does not exist.
      */
-    get(key) {
+    get(key: K): V | undefined {
         const item = this.cache.get(key)
         if (!item) {
-            return -1
+            return undefined
         }
 
         // promote current value
@@ -26,19 +22,18 @@ class LRUCache {
     }
 
     /**
-     * @param {number} key
-     * @param {number} value
+     * Put the value in cache by key.
      */
-    put(key, value) {
+    put(key: K, value: V) {
         if (this.cache.has(key)) { // promote current value
             this.cache.delete(key)
         } else if (this.cache.size >= this.capacity) {
-            this.cache.delete(this._oldestKey())
+            this.cache.delete(this.oldestKey!)
         }
         this.cache.set(key, value)
     }
 
-    _oldestKey() {
+    private get oldestKey(): K | undefined {
         return this.cache.keys().next().value // take the first key
     }
 }

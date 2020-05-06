@@ -1,8 +1,4 @@
-/**
- * @param {number} n
- * @returns {boolean}
- */
-const isPrime = n => {
+function isPrime(n: number): boolean {
     if (n <= 1) {
         return false
     }

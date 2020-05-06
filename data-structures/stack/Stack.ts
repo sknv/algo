@@ -1,38 +1,31 @@
-import LinkedList from '../linked-list/LinkedList.js'
+import LinkedList from '../linked-list/LinkedList.ts'
 
-class Stack {
-    /** @type {LinkedList} */
-    linkedList = new LinkedList()
+class Stack<T> {
+    linkedList = new LinkedList<T>()
 
-    /**
-     * @returns {boolean}
-     */
-    isEmpty() {
-        return !this.linkedList.head
+    get isEmpty(): boolean {
+        return this.linkedList.isEmpty
     }
 
     /**
      * Read the element at the front of the stack without removing it.
-     * @returns {*}
      */
-    peek() {
+    peek(): T | undefined {
         return this.linkedList.head?.value
     }
 
     /**
      * Add a new element to the front of the stack (the head of the linked list).
      * This element will be processed first.
-     * @param {*} value
      */
-    push(value) {
+    push(value: T) {
         this.linkedList.prepend(value)
     }
 
     /**
      * Remove and return the element at the front of the queue (the head of the linked list).
-     * @returns {*}
      */
-    pop() {
+    pop(): T | undefined {
         const deletedHead = this.linkedList.deleteHead()
         return deletedHead?.value
     }
