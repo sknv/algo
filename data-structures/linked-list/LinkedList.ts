@@ -5,11 +5,11 @@ class LinkedList<T> {
     tail?: LinkedListNode<T>
 
     get isEmpty(): boolean {
-        return (!this.head || !this.tail)
+        return !this.head
     }
 
     /**
-     * Returns the prepended node.
+     * Return the prepended node.
      */
     prepend(value: T): LinkedListNode<T> {
         // Make new node to be the head
@@ -27,7 +27,7 @@ class LinkedList<T> {
     }
 
     /**
-     * Returns the appended node.
+     * Return the appended node.
      */
     append(value: T): LinkedListNode<T> {
         const newNode = { value }
@@ -46,7 +46,7 @@ class LinkedList<T> {
     }
 
     /**
-     * Removes and returns the head.
+     * Remove and return the head.
      */
     deleteHead(): LinkedListNode<T> | undefined {
         if (!this.head) {
@@ -65,7 +65,7 @@ class LinkedList<T> {
     }
 
     /**
-     * Removes and returns the tail.
+     * Remove and return the tail.
      */
     deleteTail(): LinkedListNode<T> | undefined {
         const deletedTail = this.tail

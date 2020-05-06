@@ -1,5 +1,5 @@
 /**
- * Returns the index of an element if exists, -1 otherwise
+ * Return the index of an element if exists, -1 otherwise
  */
 function binarySearch(arr: number[], target: number): number {
     let left = 0, right = arr.length - 1

@@ -3,7 +3,7 @@ function swap(arr: number[], i: number, j: number) {
 }
 
 /**
- * Returns partitioning index.
+ * Return the partitioning index.
  */
 function partition(arr: number[], left: number, right: number): number {
     const pivot = arr[right] // take the right element as the pivot one
