@@ -19,7 +19,7 @@ function testStackPeek() {
     const value = stack.peek()
 
     console.assert(!stack.isEmpty, 'expect Stack<> to have some values')
-    console.assert(value === expected, `expect to be: ${expected}, got instead: ${value}`)
+    console.assert(value === expected, `expect Stack<>.peek() to be: ${expected}, got instead: ${value}`)
 }
 
 function testStackPop() {
@@ -28,7 +28,7 @@ function testStackPop() {
     stack.push(expected)
 
     const value = stack.pop()
-    console.assert(value === expected, `expect to be: ${expected}, got instead: ${value}`)
+    console.assert(value === expected, `expect Stack<>.pop() to be: ${expected}, got instead: ${value}`)
 
     stack.pop()
     console.assert(stack.isEmpty, 'expect Stack<> to be empty')

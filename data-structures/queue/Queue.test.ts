@@ -19,7 +19,7 @@ function testQueuePeek() {
     const value = queue.peek()
 
     console.assert(!queue.isEmpty, 'expect Queue<> to have some values')
-    console.assert(value === expected, `expect to be: ${expected}, got instead: ${value}`)
+    console.assert(value === expected, `expect Queue<>.peek() to be: ${expected}, got instead: ${value}`)
 }
 
 function testQueueDequeue() {
@@ -28,7 +28,7 @@ function testQueueDequeue() {
     queue.enqueue(2)
 
     const value = queue.dequeue()
-    console.assert(value === expected, `expect to be: ${expected}, got instead: ${value}`)
+    console.assert(value === expected, `expect Queue<>.dequeue() to be: ${expected}, got instead: ${value}`)
 
     queue.dequeue()
     console.assert(queue.isEmpty, 'expect Queue<> to be empty')
