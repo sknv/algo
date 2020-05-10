@@ -10,11 +10,11 @@ class BinarySearchTreeNode<T> extends BinaryTreeNode<T> {
             return this
         }
 
-        if (value < this.value && this.left instanceof BinarySearchTreeNode) { // check the left subtree
+        if (value < this.value) { // check the left subtree
             return this.left?.find(value)
         }
 
-        if (value > this.value && this.right instanceof BinarySearchTreeNode) { // check the right subtree
+        if (value > this.value) { // check the right subtree
             return this.right?.find(value)
         }
 
