@@ -6,7 +6,7 @@ function binarySearch(arr: number[], target: number): number {
     while (left <= right) {
         const mid = left + Math.trunc((right - left) / 2)
 
-        if (arr[mid] === target) {
+        if (target === arr[mid]) {
             return mid
         }
 
