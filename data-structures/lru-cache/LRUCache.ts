@@ -1,10 +1,7 @@
 class LRUCache<K, V> {
     cache = new Map<K, V>()
-    capacity: number
 
-    constructor(capacity: number) {
-        this.capacity = capacity
-    }
+    constructor(public capacity: number) { }
 
     /**
      * Return the value in cache by key, or undefined if one does not exist.

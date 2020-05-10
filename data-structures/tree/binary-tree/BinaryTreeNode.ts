@@ -1,15 +1,7 @@
 type Traverser<T> = (value: T) => void
 
 class BinaryTreeNode<T> {
-    value: T
-    left: BinaryTreeNode<T> | undefined
-    right: BinaryTreeNode<T> | undefined
-
-    constructor(value: T, left?: BinaryTreeNode<T>, right?: BinaryTreeNode<T>) {
-        this.value = value
-        this.left = left
-        this.right = right
-    }
+    constructor(public value: T, public left?: BinaryTreeNode<T>, public right?: BinaryTreeNode<T>) { }
 
     get leftHeight(): number {
         if (!this.left) {
