@@ -14,16 +14,16 @@ function testBinarySearchTreeFind() {
     const root = makeTestSearchBinaryTree()
 
     let search = root.find(6)
-    console.assert(!!search, 'expect BinarySearchTree<>.find(6) to present')
+    console.assert(!!search, 'expect BinarySearchTreeNode<>.find(6) to present')
 
     search = root.find(5)
-    console.assert(!search, 'expect BinarySearchTree<>.find(5) to be blank')
+    console.assert(!search, 'expect BinarySearchTreeNode<>.find(5) to be blank')
 
     search = root.find(4)
-    console.assert(!!search, 'expect BinarySearchTree<>.find(4) to present')
+    console.assert(!!search, 'expect BinarySearchTreeNode<>.find(4) to present')
 
     search = root.find(20)
-    console.assert(!!search, 'expect BinarySearchTree<>.find(20) to present')
+    console.assert(!!search, 'expect BinarySearchTreeNode<>.find(20) to present')
 }
 
 testBinarySearchTreeFind()
