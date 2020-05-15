@@ -21,6 +21,10 @@ class BinarySearchTree<T> {
 
         return this.root.insert(value)
     }
+
+    delete(value: T): BinarySearchTreeNode<T> | undefined {
+        return this.root?.delete(value)
+    }
 }
 
 export default BinarySearchTree

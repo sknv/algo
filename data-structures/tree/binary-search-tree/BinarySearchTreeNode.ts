@@ -21,6 +21,14 @@ class BinarySearchTreeNode<T> extends BinaryTreeNode<T> {
         return undefined
     }
 
+    findMin(): BinarySearchTreeNode<T> {
+        let current: BinarySearchTreeNode<T> = this
+        while (current.left instanceof BinarySearchTreeNode) {
+            current = current.left
+        }
+        return current
+    }
+
     insert(value: T): BinarySearchTreeNode<T> {
         if (value < this.value) { // insert to the left subtree
             if (this.left instanceof BinarySearchTreeNode) {
@@ -43,6 +51,40 @@ class BinarySearchTreeNode<T> extends BinaryTreeNode<T> {
         }
 
         return this // the tree already has this value
+    }
+
+    delete(value: T): BinarySearchTreeNode<T> | undefined {
+        if (value < this.value && this.left instanceof BinarySearchTreeNode) { // value is in the left subtree
+            const childNode = this.left.delete(value)
+            if (!childNode) { return undefined }
+            this.left = childNode
+            return this
+        }
+
+        if (value > this.value && this.right instanceof BinarySearchTreeNode) { // value is in the right subtree
+            const childNode = this.right.delete(value)
+            if (!childNode) { return undefined }
+            this.right = childNode
+            return this
+        }
+
+        if (value !== this.value) {
+            return undefined
+        }
+
+        // Node with only one child or no child
+        if (!this.left) {
+            return this.right as BinarySearchTreeNode<T>
+        }
+        if (!this.right) {
+            return this.left as BinarySearchTreeNode<T>
+        }
+
+        // Node has both children
+        const minNode = (this.right as BinarySearchTreeNode<T>).findMin() // get the smallest in the right subtree
+        this.value = minNode.value // copy the inorder successor's content to this node
+        this.right = (this.right as BinarySearchTreeNode<T>).delete(minNode.value) // delete the inorder successor
+        return this
     }
 }
 
