@@ -14,7 +14,7 @@ function testBinarySearchTreeInsert() {
     const tree = makeTestSearchBinaryTree()
 
     let nums: number[] = [], expected = [2, 4, 6, 8, 10, 20]
-    tree.root?.traverseInOrder((value: number) => nums.push(value))
+    tree.traverseInOrder((value: number) => nums.push(value))
     console.assert(JSON.stringify(nums) === JSON.stringify(expected), `expect BinarySearchTree<>.root.traverseInOrder() to be: ${expected}, got instead: ${nums}`)
 }
 
@@ -39,27 +39,27 @@ function testBinarySearchTreeDelete() {
 
     tree.delete(4)
     let nums: number[] = [], expected = [2, 6, 8, 10, 20]
-    tree.root?.traverseInOrder((value: number) => nums.push(value))
+    tree.traverseInOrder((value: number) => nums.push(value))
     console.assert(JSON.stringify(nums) === JSON.stringify(expected), `expect BinarySearchTree<>.root.traverseInOrder() to be: ${expected}, got instead: ${nums}`)
 
     tree.delete(9)
     nums = [], expected = [2, 6, 8, 10, 20]
-    tree.root?.traverseInOrder((value: number) => nums.push(value))
+    tree.traverseInOrder((value: number) => nums.push(value))
     console.assert(JSON.stringify(nums) === JSON.stringify(expected), `expect BinarySearchTree<>.root.traverseInOrder() to be: ${expected}, got instead: ${nums}`)
 
     tree.delete(8)
     nums = [], expected = [2, 6, 10, 20]
-    tree.root?.traverseInOrder((value: number) => nums.push(value))
+    tree.traverseInOrder((value: number) => nums.push(value))
     console.assert(JSON.stringify(nums) === JSON.stringify(expected), `expect BinarySearchTree<>.root.traverseInOrder() to be: ${expected}, got instead: ${nums}`)
 
     tree.delete(7)
     nums = [], expected = [2, 6, 10, 20]
-    tree.root?.traverseInOrder((value: number) => nums.push(value))
+    tree.traverseInOrder((value: number) => nums.push(value))
     console.assert(JSON.stringify(nums) === JSON.stringify(expected), `expect BinarySearchTree<>.root.traverseInOrder() to be: ${expected}, got instead: ${nums}`)
 
     tree.delete(10)
     nums = [], expected = [2, 6, 20]
-    tree.root?.traverseInOrder((value: number) => nums.push(value))
+    tree.traverseInOrder((value: number) => nums.push(value))
     console.assert(JSON.stringify(nums) === JSON.stringify(expected), `expect BinarySearchTree<>.root.traverseInOrder() to be: ${expected}, got instead: ${nums}`)
 }
 

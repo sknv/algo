@@ -3,45 +3,58 @@ type Traverser<T> = (value: T) => void
 class BinaryTreeNode<T> {
     constructor(public value: T, public left?: BinaryTreeNode<T>, public right?: BinaryTreeNode<T>) { }
 
-    get leftHeight(): number {
-        if (!this.left) {
+    static getLeftHeight<T>(node?: BinaryTreeNode<T>): number {
+        if (!node?.left) {
             return 0
         }
-        return this.left.height + 1
+        return BinaryTreeNode.getHeight(node.left) + 1
     }
 
-    get rightHeight(): number {
-        if (!this.right) {
+    static getRightHeight<T>(node?: BinaryTreeNode<T>): number {
+        if (!node?.right) {
             return 0
         }
-        return this.right.height + 1
+        return BinaryTreeNode.getHeight(node.right) + 1
     }
 
-    get height(): number {
-        return Math.max(this.leftHeight, this.rightHeight)
+    static getHeight<T>(node?: BinaryTreeNode<T>): number {
+        return Math.max(BinaryTreeNode.getLeftHeight(node), BinaryTreeNode.getRightHeight(node))
     }
 
-    get balanceFactor(): number {
-        return this.leftHeight - this.rightHeight
+    static getBalanceFactor<T>(node?: BinaryTreeNode<T>): number {
+        return BinaryTreeNode.getLeftHeight(node) - BinaryTreeNode.getRightHeight(node)
     }
 
-    traversePreOrder(traverse: Traverser<T>) {
-        traverse(this.value)
-        this.left?.traversePreOrder(traverse)
-        this.right?.traversePreOrder(traverse)
+    static traversePreOrder<T>(traverse: Traverser<T>, node?: BinaryTreeNode<T>) {
+        if (!node) {
+            return
+        }
+
+        traverse(node.value)
+        BinaryTreeNode.traversePreOrder(traverse, node.left)
+        BinaryTreeNode.traversePreOrder(traverse, node.right)
     }
 
-    traverseInOrder(traverse: Traverser<T>) {
-        this.left?.traverseInOrder(traverse)
-        traverse(this.value)
-        this.right?.traverseInOrder(traverse)
+    static traverseInOrder<T>(traverse: Traverser<T>, node?: BinaryTreeNode<T>) {
+        if (!node) {
+            return
+        }
+
+        BinaryTreeNode.traverseInOrder(traverse, node.left)
+        traverse(node.value)
+        BinaryTreeNode.traverseInOrder(traverse, node.right)
     }
 
-    traversePostOrder(traverse: Traverser<T>) {
-        this.left?.traversePostOrder(traverse)
-        this.right?.traversePostOrder(traverse)
-        traverse(this.value)
+    static traversePostOrder<T>(traverse: Traverser<T>, node?: BinaryTreeNode<T>) {
+        if (!node) {
+            return
+        }
+
+        BinaryTreeNode.traversePostOrder(traverse, node.left)
+        BinaryTreeNode.traversePostOrder(traverse, node.right)
+        traverse(node.value)
     }
 }
 
 export default BinaryTreeNode
+export { Traverser }

@@ -1,90 +1,106 @@
 import BinaryTreeNode from '../binary-tree/BinaryTreeNode.ts'
 
-class BinarySearchTreeNode<T> extends BinaryTreeNode<T> {
-    constructor(value: T, left?: BinarySearchTreeNode<T>, right?: BinarySearchTreeNode<T>) {
-        super(value, left, right)
-    }
-
-    find(value: T): BinarySearchTreeNode<T> | undefined {
-        if (value === this.value) { // check the node itself
-            return this
+class BinarySearchTreeNode {
+    static find<T>(value: T, node?: BinaryTreeNode<T>): BinaryTreeNode<T> | undefined {
+        if (!node) {
+            return undefined
         }
 
-        if (value < this.value && this.left instanceof BinarySearchTreeNode) { // check the left subtree
-            return this.left?.find(value)
+        if (value === node.value) { // check the node itself
+            return node
         }
 
-        if (value > this.value && this.right instanceof BinarySearchTreeNode) { // check the right subtree
-            return this.right?.find(value)
+        if (value < node.value) { // check the left subtree
+            return BinarySearchTreeNode.find(value, node.left)
+        }
+
+        if (value > node.value) { // check the right subtree
+            return BinarySearchTreeNode.find(value, node.right)
         }
 
         return undefined
     }
 
-    findMin(): BinarySearchTreeNode<T> {
-        let current: BinarySearchTreeNode<T> = this
-        while (current.left instanceof BinarySearchTreeNode) {
+    static findMin<T>(node?: BinaryTreeNode<T>): BinaryTreeNode<T> | undefined {
+        if (!node) {
+            return undefined
+        }
+
+        let current: BinaryTreeNode<T> = node
+        while (current.left) {
             current = current.left
         }
         return current
     }
 
-    insert(value: T): BinarySearchTreeNode<T> {
-        if (value < this.value) { // insert to the left subtree
-            if (this.left instanceof BinarySearchTreeNode) {
-                return this.left.insert(value)
+    static insert<T>(value: T, node?: BinaryTreeNode<T>): BinaryTreeNode<T> {
+        if (!node) {
+            return new BinaryTreeNode(value)
+        }
+
+        if (value < node.value) { // insert to the left subtree
+            if (node.left) {
+                return BinarySearchTreeNode.insert(value, node.left)
             }
             // Insert as a left leap
-            const newNode = new BinarySearchTreeNode(value)
-            this.left = newNode
+            const newNode = new BinaryTreeNode(value)
+            node.left = newNode
             return newNode
         }
 
-        if (value > this.value) { // insert to the right subtree
-            if (this.right instanceof BinarySearchTreeNode) {
-                return this.right.insert(value)
+        if (value > node.value) { // insert to the right subtree
+            if (node.right) {
+                return BinarySearchTreeNode.insert(value, node.right)
             }
             // Insert as a right leap
-            const newNode = new BinarySearchTreeNode(value)
-            this.right = newNode
+            const newNode = new BinaryTreeNode(value)
+            node.right = newNode
             return newNode
         }
 
-        return this // the tree already has this value
+        return node // the tree already has this value
     }
 
-    delete(value: T): BinarySearchTreeNode<T> | undefined {
-        if (value < this.value && this.left instanceof BinarySearchTreeNode) { // value is in the left subtree
-            const childNode = this.left.delete(value)
-            if (!childNode) { return undefined }
-            this.left = childNode
-            return this
+    static delete<T>(value: T, node?: BinaryTreeNode<T>): BinaryTreeNode<T> | undefined {
+        if (!node) {
+            return undefined
         }
 
-        if (value > this.value && this.right instanceof BinarySearchTreeNode) { // value is in the right subtree
-            const childNode = this.right.delete(value)
-            if (!childNode) { return undefined }
-            this.right = childNode
-            return this
+        if (value < node.value) { // value is in the left subtree
+            const childNode = BinarySearchTreeNode.delete(value, node.left)
+            if (!childNode) {
+                return undefined
+            }
+            node.left = childNode
+            return node
         }
 
-        if (value !== this.value) {
+        if (value > node.value) { // value is in the right subtree
+            const childNode = BinarySearchTreeNode.delete(value, node.right)
+            if (!childNode) {
+                return undefined
+            }
+            node.right = childNode
+            return node
+        }
+
+        if (value !== node.value) {
             return undefined
         }
 
         // Node with only one child or no child
-        if (!this.left) {
-            return this.right as BinarySearchTreeNode<T>
+        if (!node.left) {
+            return node.right
         }
-        if (!this.right) {
-            return this.left as BinarySearchTreeNode<T>
+        if (!node.right) {
+            return node.left
         }
 
         // Node has both children
-        const minNode = (this.right as BinarySearchTreeNode<T>).findMin() // get the smallest in the right subtree
-        this.value = minNode.value // copy the inorder successor's content to this node
-        this.right = (this.right as BinarySearchTreeNode<T>).delete(minNode.value) // delete the inorder successor
-        return this
+        const minNode = BinarySearchTreeNode.findMin(node.right) // get the smallest in the right subtree
+        node.value = minNode!.value // copy the inorder successor's content to this node
+        node.right = BinarySearchTreeNode.delete(minNode!.value, node.right) // delete the inorder successor
+        return node
     }
 }
 
