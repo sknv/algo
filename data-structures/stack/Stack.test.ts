@@ -1,40 +1,46 @@
-import Stack from './Stack.ts'
+import Stack from "./Stack.ts";
 
 function testNewStack() {
-    const stack = new Stack<number>()
+  const stack = new Stack<number>();
 
-    console.assert(stack.isEmpty, 'expect Stack<> to be empty')
+  console.assert(stack.isEmpty, "expect Stack<> to be empty");
 }
 
 function testStackPush() {
-    const stack = new Stack<number>()
-    stack.push(1)
+  const stack = new Stack<number>();
+  stack.push(1);
 
-    console.assert(!stack.isEmpty, 'expect Stack<> to have some values')
+  console.assert(!stack.isEmpty, "expect Stack<> to have some values");
 }
 
 function testStackPeek() {
-    const stack = new Stack<number>(), expected = 1
-    stack.push(expected)
-    const value = stack.peek()
+  const stack = new Stack<number>(), expected = 1;
+  stack.push(expected);
+  const value = stack.peek();
 
-    console.assert(!stack.isEmpty, 'expect Stack<> to have some values')
-    console.assert(value === expected, `expect Stack<>.peek() to be: ${expected}, got instead: ${value}`)
+  console.assert(!stack.isEmpty, "expect Stack<> to have some values");
+  console.assert(
+    value === expected,
+    `expect Stack<>.peek() to be: ${expected}, got instead: ${value}`,
+  );
 }
 
 function testStackPop() {
-    const stack = new Stack<number>(), expected = 2
-    stack.push(1)
-    stack.push(expected)
+  const stack = new Stack<number>(), expected = 2;
+  stack.push(1);
+  stack.push(expected);
 
-    const value = stack.pop()
-    console.assert(value === expected, `expect Stack<>.pop() to be: ${expected}, got instead: ${value}`)
+  const value = stack.pop();
+  console.assert(
+    value === expected,
+    `expect Stack<>.pop() to be: ${expected}, got instead: ${value}`,
+  );
 
-    stack.pop()
-    console.assert(stack.isEmpty, 'expect Stack<> to be empty')
+  stack.pop();
+  console.assert(stack.isEmpty, "expect Stack<> to be empty");
 }
 
-testNewStack()
-testStackPush()
-testStackPeek()
-testStackPop()
+testNewStack();
+testStackPush();
+testStackPeek();
+testStackPop();
