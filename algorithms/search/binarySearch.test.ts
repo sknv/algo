@@ -1,9 +1,9 @@
 import binarySearch from "./binarySearch.ts";
 
 function testBinarySearch() {
-  const nums = [5, -2, 12, 0, 9];
+  const nums = [-2, 0, 5, 9, 12];
 
-  let idx = binarySearch(nums, 12), expected = 2;
+  let idx = binarySearch(nums, 12), expected = 4;
   console.assert(
     idx === expected,
     `expect binarySearch(..., 12) to be: ${expected}, got instead: ${idx}`,
