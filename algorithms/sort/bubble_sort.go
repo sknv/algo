@@ -1,7 +1,7 @@
 package sort
 
 func BubbleSortInt(arr []int, less func(cur, next int) bool) {
-	for i := 0; i < len(arr)-1; i++ {
+	for i := 0; i < len(arr); i++ {
 		swapped := false
 
 		for j := 0; j < len(arr)-i-1; j++ {
