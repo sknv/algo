@@ -15,7 +15,7 @@ func New() *Stack {
 }
 
 func (s *Stack) IsEmpty() bool {
-	return s.list.Front() == nil
+	return s.list.Len() == 0
 }
 
 func (s *Stack) Push(value interface{}) {

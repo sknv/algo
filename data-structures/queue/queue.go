@@ -15,7 +15,7 @@ func New() *Queue {
 }
 
 func (q *Queue) IsEmpty() bool {
-	return q.list.Front() == nil
+	return q.list.Len() == 0
 }
 
 func (q *Queue) Enqueue(value interface{}) {
