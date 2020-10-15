@@ -5,12 +5,12 @@ import (
 	"testing"
 )
 
-func TestBFS(t *testing.T) {
+func TestDFS(t *testing.T) {
 	root := makeGraph()
 
-	expected := []int{0, 1, 4, 5, 3, 2}
+	expected := []int{0, 1, 3, 2, 4, 5}
 	var values []int
-	BFS(root, func(value *GraphNode) {
+	DFS(root, func(value *GraphNode) {
 		values = append(values, value.Value.(int))
 	})
 

@@ -5,6 +5,10 @@ import (
 )
 
 func BFS(root *GraphNode, visit func(value *GraphNode)) {
+	if root == nil {
+		return
+	}
+
 	q := queue.New()
 	q.Enqueue(root)
 	visited := map[*GraphNode]struct{}{
@@ -16,8 +20,8 @@ func BFS(root *GraphNode, visit func(value *GraphNode)) {
 		visit(node)
 		for _, n := range node.Nodes {
 			if _, found := visited[n]; !found {
-				visited[n] = struct{}{}
 				q.Enqueue(n)
+				visited[n] = struct{}{}
 			}
 		}
 	}
