@@ -16,7 +16,7 @@ func TestLinkedList_Reverse(t *testing.T) {
 
 	expected := []int{4, 3, 2, 1, 0}
 	if !reflect.DeepEqual(expected, values) {
-		t.Errorf("expect reverse values to be [%v], got instead [%v]", expected, values)
+		t.Errorf("expect reversed values to be [%v], got instead [%v]", expected, values)
 	}
 }
 
