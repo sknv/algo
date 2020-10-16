@@ -61,7 +61,7 @@ func traversePostOrder(node *BinaryTreeNode, visit func(value interface{})) {
 		return
 	}
 
-	traverseInOrder(node.Left, visit)
-	traverseInOrder(node.Right, visit)
+	traversePostOrder(node.Left, visit)
+	traversePostOrder(node.Right, visit)
 	visit(node.Value)
 }
