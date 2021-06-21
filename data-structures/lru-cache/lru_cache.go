@@ -36,6 +36,7 @@ func (c *LRUCache) Put(key string, value interface{}) {
 	if element, found := c.items[key]; found {
 		c.queue.MoveToFront(element)
 		element.Value.(*Item).Value = value
+		return
 	}
 
 	if c.queue.Len() >= c.capacity {
