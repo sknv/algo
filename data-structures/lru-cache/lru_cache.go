@@ -18,7 +18,7 @@ type LRUCache struct {
 func NewLRUCache(capacity int) *LRUCache {
 	return &LRUCache{
 		capacity: capacity,
-		items:    make(map[string]*list.Element),
+		items:    make(map[string]*list.Element, capacity),
 		queue:    list.New(),
 	}
 }
