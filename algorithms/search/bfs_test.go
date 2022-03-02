@@ -18,3 +18,7 @@ func TestBFS(t *testing.T) {
 		t.Errorf("expect bfs values to be [%v], got instead [%v]", expected, values)
 	}
 }
+
+func TestBFS2(t *testing.T) {
+	TestBFS(t)
+}

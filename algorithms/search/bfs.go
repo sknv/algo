@@ -26,3 +26,27 @@ func BFS(root *GraphNode, visit func(value *GraphNode)) {
 		}
 	}
 }
+
+func BFS2(root *GraphNode, visit func(value *GraphNode)) {
+	if root == nil {
+		return
+	}
+
+	q := queue.New()
+	q.Enqueue(root)
+	visited := make(map[*GraphNode]struct{})
+
+	for !q.IsEmpty() {
+		node := q.Dequeue().(*GraphNode)
+		if _, found := visited[node]; found {
+			continue
+		}
+
+		visit(node)
+		visited[node] = struct{}{}
+
+		for _, n := range node.Nodes {
+			q.Enqueue(n)
+		}
+	}
+}
