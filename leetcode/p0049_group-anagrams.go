@@ -3,6 +3,7 @@ package leetcode
 // https://leetcode.com/problems/group-anagrams/description/
 
 func groupAnagrams(strs []string) [][]string {
+	// Группируем по кол-во вхождений каждого символа в текущую строку.
 	groupsMap := make(map[[26]byte][]string, len(strs))
 	for _, str := range strs {
 		freqs := letterFrequences(str)
