@@ -26,6 +26,8 @@ func NewDeque[T any](capacity int) Deque[T] {
 }
 
 // PushFront adds an element to the front of the deque.
+//
+// No need to use the method to implement a stack or a queue.
 func (d *Deque[T]) PushFront(value T) {
 	d.data = append([]T{value}, d.data...)
 }
