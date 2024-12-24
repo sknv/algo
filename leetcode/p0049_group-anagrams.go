@@ -6,7 +6,7 @@ func groupAnagrams(strs []string) [][]string {
 	// Группируем по кол-во вхождений каждого символа в текущую строку.
 	groupsMap := make(map[[26]byte][]string, len(strs))
 	for _, str := range strs {
-		freqs := letterFrequences(str)
+		freqs := letterFrequencesForAnagrams(str)
 		groupsMap[freqs] = append(groupsMap[freqs], str)
 	}
 
@@ -18,7 +18,7 @@ func groupAnagrams(strs []string) [][]string {
 	return groups
 }
 
-func letterFrequences(str string) [26]byte {
+func letterFrequencesForAnagrams(str string) [26]byte {
 	var freqs [26]byte
 	for i := 0; i < len(str); i++ {
 		letter := str[i] - 'a'
