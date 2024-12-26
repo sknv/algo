@@ -12,6 +12,16 @@ type IntListNode struct {
 }
 
 //
+// Tree
+//
+
+type IntTreeNode struct {
+	Val   int
+	Left  *IntTreeNode
+	Right *IntTreeNode
+}
+
+//
 // Deque
 //
 
