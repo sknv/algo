@@ -35,17 +35,17 @@ func NewDeque[T any](capacity int) Deque[T] {
 	}
 }
 
-// PushFront adds an element to the front of the deque.
-//
-// No need to use the method to implement a stack or a queue.
-func (d *Deque[T]) PushFront(value T) {
-	d.data = append([]T{value}, d.data...)
-}
-
 // PushBack adds an element to the back of the deque.
 func (d *Deque[T]) PushBack(value T) {
 	d.data = append(d.data, value)
 }
+
+// PushFront adds an element to the front of the deque.
+//
+// No need to use the method to implement a stack or a queue.
+// func (d *Deque[T]) PushFront(value T) {
+// 	d.data = append([]T{value}, d.data...)
+// }
 
 // PopFront removes and returns an element from the front of the deque.
 func (d *Deque[T]) PopFront() (T, bool) {
@@ -73,6 +73,14 @@ func (d *Deque[T]) PopBack() (T, bool) {
 	d.data = d.data[:len(d.data)-1]
 
 	return value, true
+}
+
+func (d *Deque[T]) Len() int {
+	return len(d.data)
+}
+
+func (d *Deque[T]) IsEmpty() bool {
+	return len(d.data) == 0
 }
 
 //
