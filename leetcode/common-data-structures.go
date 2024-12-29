@@ -22,6 +22,22 @@ type IntTreeNode struct {
 }
 
 //
+// Trie
+//
+
+type ByteTrieNode struct {
+	children  map[byte]*ByteTrieNode
+	isWordEnd bool
+}
+
+func NewByteTrieNode(capacity int) *ByteTrieNode {
+	return &ByteTrieNode{
+		children:  make(map[byte]*ByteTrieNode, capacity),
+		isWordEnd: false,
+	}
+}
+
+//
 // Deque
 //
 

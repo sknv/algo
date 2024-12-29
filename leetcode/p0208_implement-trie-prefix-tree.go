@@ -2,25 +2,13 @@ package leetcode
 
 // https://leetcode.com/problems/implement-trie-prefix-tree/description/
 
-type TrieNode struct {
-	children      map[byte]*TrieNode
-	completedWord bool
-}
-
-func NewTrieNode() *TrieNode {
-	return &TrieNode{
-		children:      make(map[byte]*TrieNode, 26),
-		completedWord: false,
-	}
-}
-
 type Trie struct {
-	root *TrieNode
+	root *ByteTrieNode
 }
 
 func TrieConstructor() Trie {
 	return Trie{
-		root: NewTrieNode(),
+		root: NewByteTrieNode(26),
 	}
 }
 
@@ -30,13 +18,13 @@ func (this *Trie) Insert(word string) {
 	for i := range word {
 		curSymbol := word[i]
 		if curNode.children[curSymbol] == nil {
-			curNode.children[curSymbol] = NewTrieNode()
+			curNode.children[curSymbol] = NewByteTrieNode(26)
 		}
 
 		curNode = curNode.children[curSymbol]
 	}
 
-	curNode.completedWord = true
+	curNode.isWordEnd = true
 }
 
 func (this *Trie) Search(word string) bool {
@@ -45,7 +33,7 @@ func (this *Trie) Search(word string) bool {
 		return false
 	}
 
-	return targetNode.completedWord
+	return targetNode.isWordEnd
 }
 
 func (this *Trie) StartsWith(prefix string) bool {
@@ -54,7 +42,7 @@ func (this *Trie) StartsWith(prefix string) bool {
 	return targetNode != nil
 }
 
-func (this *Trie) searchNode(word string) *TrieNode {
+func (this *Trie) searchNode(word string) *ByteTrieNode {
 	curNode := this.root
 
 	for i := range word {
