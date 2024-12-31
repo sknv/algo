@@ -1,14 +1,7 @@
-mod p0049_group_anagrams;
-use p0049_group_anagrams::Solution;
+mod p0268_missing_number;
+use p0268_missing_number::Solution;
 
 fn main() {
-    let result = Solution::group_anagrams(vec![
-        "eat".to_string(),
-        "tea".to_string(),
-        "tan".to_string(),
-        "ate".to_string(),
-        "nat".to_string(),
-        "bat".to_string(),
-    ]);
+    let result = Solution::missing_number(vec![3, 0, 1]);
     println!("result is: {:?}", result)
 }
