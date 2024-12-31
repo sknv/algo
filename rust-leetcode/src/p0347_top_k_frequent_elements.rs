@@ -16,7 +16,7 @@ impl Solution {
         }
 
         let mut pair_freqs = Vec::with_capacity(freqs.len());
-        for (&val, &freq) in &freqs {
+        for (val, freq) in freqs {
             pair_freqs.push(Pair(val, freq));
         }
 
