@@ -1,4 +1,4 @@
-// https://leetcode.com/problems/contains-duplicate/
+// https://leetcode.com/problems/missing-number/
 
 pub struct Solution;
 

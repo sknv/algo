@@ -1,7 +1,7 @@
-mod p0268_missing_number;
-use p0268_missing_number::Solution;
+mod p0448_array_numbers_disappeared;
+use p0448_array_numbers_disappeared::Solution;
 
 fn main() {
-    let result = Solution::missing_number(vec![3, 0, 1]);
+    let result = Solution::find_disappeared_numbers(vec![4,3,2,7,8,2,3,1]);
     println!("result is: {:?}", result)
 }
