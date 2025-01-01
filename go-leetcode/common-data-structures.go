@@ -1,7 +1,6 @@
 package leetcode
 
 import (
-	"cmp"
 	"container/heap"
 )
 
@@ -161,12 +160,12 @@ func (pq *PriorityQueue[T]) Update(item *PriorityQueueItem[T], value T, priority
 //
 
 // A binaryHeap implements heap.Interface and holds items.
-type binaryHeap[T cmp.Ordered] struct {
+type binaryHeap[T any] struct {
 	items []T
 	less  func(prev, next T) bool
 }
 
-func newBinaryHeapp[T cmp.Ordered](capacity int, less func(prev, next T) bool) binaryHeap[T] {
+func newBinaryHeap[T any](capacity int, less func(prev, next T) bool) binaryHeap[T] {
 	return binaryHeap[T]{
 		items: make([]T, 0, capacity),
 		less:  less,
@@ -197,13 +196,13 @@ func (h *binaryHeap[T]) Pop() any {
 }
 
 // BinaryHeap provides a nicer interface to push and pop items.
-type BinaryHeap[T cmp.Ordered] struct {
+type BinaryHeap[T any] struct {
 	heap binaryHeap[T]
 }
 
-func NewBinaryHeap[T cmp.Ordered](capacity int, less func(prev, next T) bool) BinaryHeap[T] {
+func NewBinaryHeap[T any](capacity int, less func(prev, next T) bool) BinaryHeap[T] {
 	return BinaryHeap[T]{
-		heap: newBinaryHeapp(capacity, less),
+		heap: newBinaryHeap(capacity, less),
 	}
 }
 
@@ -219,26 +218,4 @@ func (h *BinaryHeap[T]) Pop() T {
 	item := heap.Pop(&h.heap)
 
 	return item.(T)
-}
-
-// MaxHeap represents a priority queue.
-type MaxHeap[T cmp.Ordered] struct {
-	BinaryHeap[T]
-}
-
-func NewMaxHeap[T cmp.Ordered](capacity int) MaxHeap[T] {
-	return MaxHeap[T]{
-		BinaryHeap: NewBinaryHeap(capacity, func(prev, next T) bool { return prev > next }),
-	}
-}
-
-// MinHeap represents a revesed priority queue.
-type MinHeap[T cmp.Ordered] struct {
-	BinaryHeap[T]
-}
-
-func NewMinHeap[T cmp.Ordered](capacity int) MinHeap[T] {
-	return MinHeap[T]{
-		BinaryHeap: NewBinaryHeap(capacity, func(prev, next T) bool { return prev < next }),
-	}
 }
