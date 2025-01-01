@@ -14,7 +14,7 @@ pub struct KthLargest {
 impl KthLargest {
     pub fn new(k: i32, nums: Vec<i32>) -> Self {
         let k = k as usize;
-        let mut min_heap = BinaryHeap::with_capacity(nums.len());
+        let mut min_heap = BinaryHeap::with_capacity(k+1);
 
         for num in nums {
             min_heap.push(Reverse(num));

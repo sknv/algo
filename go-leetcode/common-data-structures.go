@@ -1,6 +1,9 @@
 package leetcode
 
-import "container/heap"
+import (
+	"cmp"
+	"container/heap"
+)
 
 //
 // Linked lists
@@ -151,4 +154,91 @@ func (pq *PriorityQueue[T]) Update(item *PriorityQueueItem[T], value T, priority
 	item.Value = value
 	item.Priority = priority
 	heap.Fix(pq, item.index)
+}
+
+//
+// Binary heaps
+//
+
+// A binaryHeap implements heap.Interface and holds items.
+type binaryHeap[T cmp.Ordered] struct {
+	items []T
+	less  func(prev, next T) bool
+}
+
+func newBinaryHeapp[T cmp.Ordered](capacity int, less func(prev, next T) bool) binaryHeap[T] {
+	return binaryHeap[T]{
+		items: make([]T, 0, capacity),
+		less:  less,
+	}
+}
+
+func (h binaryHeap[T]) Len() int {
+	return len(h.items)
+}
+
+func (h binaryHeap[T]) Less(i, j int) bool {
+	return h.less(h.items[i], h.items[j])
+}
+
+func (h *binaryHeap[T]) Swap(i, j int) {
+	h.items[i], h.items[j] = h.items[j], h.items[i]
+}
+
+func (h *binaryHeap[T]) Push(item any) {
+	h.items = append(h.items, item.(T))
+}
+
+func (h *binaryHeap[T]) Pop() any {
+	item := h.items[len(h.items)-1]
+	h.items = h.items[:len(h.items)-1]
+
+	return item
+}
+
+// BinaryHeap provides a nicer interface to push and pop items.
+type BinaryHeap[T cmp.Ordered] struct {
+	heap binaryHeap[T]
+}
+
+func NewBinaryHeap[T cmp.Ordered](capacity int, less func(prev, next T) bool) BinaryHeap[T] {
+	return BinaryHeap[T]{
+		heap: newBinaryHeapp(capacity, less),
+	}
+}
+
+func (h BinaryHeap[T]) Len() int {
+	return h.heap.Len()
+}
+
+func (h *BinaryHeap[T]) Push(item T) {
+	heap.Push(&h.heap, item)
+}
+
+func (h *BinaryHeap[T]) Pop() T {
+	item := heap.Pop(&h.heap)
+
+	return item.(T)
+}
+
+// MaxHeap represents a priority queue.
+type MaxHeap[T cmp.Ordered] struct {
+	BinaryHeap[T]
+}
+
+func NewMaxHeap[T cmp.Ordered](capacity int) MaxHeap[T] {
+	return MaxHeap[T]{
+		BinaryHeap: NewBinaryHeap(capacity, func(prev, next T) bool { return prev > next }),
+	}
+}
+
+// MinHeap represents a revesed priority queue.
+type MinHeap[T cmp.Ordered] struct {
+	BinaryHeap[T]
+}
+
+func NewMinHeap[T cmp.Ordered](capacity int) MinHeap[T] {
+	return MinHeap[T]{
+		BinaryHeap: NewBinaryHeap(capacity, func(prev, next T) bool { return prev < next }),
+	}
 }
