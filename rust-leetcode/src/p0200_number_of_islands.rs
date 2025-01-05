@@ -1,7 +1,5 @@
 // https://leetcode.com/problems/number-of-islands/
 
-use std::usize;
-
 pub struct Solution;
 
 impl Solution {
