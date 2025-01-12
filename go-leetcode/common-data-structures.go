@@ -79,6 +79,19 @@ func (d *Deque[T]) PopFront() (T, bool) {
 	return value, true
 }
 
+// PeekFront returns an element from the front of the deque.
+func (d *Deque[T]) PeekFront() (T, bool) {
+	if len(d.data) == 0 {
+		var zero T
+
+		return zero, false
+	}
+
+	value := d.data[0]
+
+	return value, true
+}
+
 // PopBack removes and returns an element from the back of the deque.
 func (d *Deque[T]) PopBack() (T, bool) {
 	if len(d.data) == 0 {
@@ -89,6 +102,19 @@ func (d *Deque[T]) PopBack() (T, bool) {
 
 	value := d.data[len(d.data)-1]
 	d.data = d.data[:len(d.data)-1]
+
+	return value, true
+}
+
+// PeekBack returns an element from the back of the deque.
+func (d *Deque[T]) PeekBack() (T, bool) {
+	if len(d.data) == 0 {
+		var zero T
+
+		return zero, false
+	}
+
+	value := d.data[len(d.data)-1]
 
 	return value, true
 }
