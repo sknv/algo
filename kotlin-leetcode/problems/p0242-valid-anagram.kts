@@ -6,11 +6,11 @@ class Solution {
 
         val seen: MutableMap<Char, Int> = HashMap(s.length)
         for (char in s) {
-            seen[char] = (seen[char] ?: 0) + 1
+            seen[char] = seen.getOrDefault(char, 0) + 1
         }
 
         for (char in t) {
-            val charCount = (seen[char] ?: 0) - 1
+            val charCount = seen.getOrDefault(char, 0) - 1
             if (charCount < 0) {
                 return false
             }
