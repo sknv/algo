@@ -1,7 +1,6 @@
 class Solution {
     fun twoSum(nums: IntArray, target: Int): IntArray {
         val seen: MutableMap<Int, Int> = HashMap(nums.size)
-
         for ((idx, num) in nums.withIndex()) {
             val search = target - num
 

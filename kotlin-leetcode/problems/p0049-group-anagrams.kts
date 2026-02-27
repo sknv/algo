@@ -6,6 +6,7 @@ class Solution {
         for (str in strs) {
             val freqs = charFrequencies(str)
 
+            // Группируем по кол-ву вхождений символов в строки
             val group = groups.getOrDefault(freqs, mutableListOf())
             group.add(str)
 
@@ -15,6 +16,7 @@ class Solution {
         return groups.values.toList()
     }
 
+    // Считает кол-во вхождений символов в переданную строку.
     fun charFrequencies(str: String): CharFrequencies {
         val chars: MutableMap<Char, Int> = HashMap(str.length)
         for (char in str) {
