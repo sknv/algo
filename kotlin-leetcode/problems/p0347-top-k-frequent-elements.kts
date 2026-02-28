@@ -8,23 +8,28 @@ class Solution {
             freqs[num] = freqs.getOrDefault(num, 0) + 1
         }
 
-        // Формируем очередь с приоритетом: чем чаще элемент встречается в массиве, тем больше у него приоритет
-        val compareByValue: Comparator<Map.Entry<Int, Int>> = compareByDescending { it.value }
-        val pq = PriorityQueue(compareByValue)
+        // Формируем очередь с приоритетом
+        val pq = PriorityQueue<Map.Entry<Int, Int>>(compareBy { it.value })
         for (pair in freqs.entries) {
             pq.add(pair)
+
+            // Храним в очереди только k элементов, чтобы итоговая вычислительная сложность была O(n*log(k))
+            // Редкие элементы в итоге будут вытеснены первыми
+            if (pq.size > k) {
+                pq.remove()
+            }
         }
 
-        // Забираем k элементов из очереди с приоритетом
-        val result: MutableList<Int> = ArrayList(k)
-        repeat(k) {
+        // Забираем оставшиеся k элементов из очереди с приоритетом в обратном порядке
+        val result = IntArray(k)
+        for (i in k - 1 downTo 0) {
             val top = pq.remove()
-            result.add(top.key)
+            result[i] = top.key
         }
 
-        return result.toIntArray()
+        return result
     }
 }
 
-val res = Solution().topKFrequent(intArrayOf(1, 1, 1, 2, 2, 3, 3, 3, 3), 2)
+val res = Solution().topKFrequent(intArrayOf(1, 1, 1, 2, 2, 3), 2)
 println(res.contentToString())
